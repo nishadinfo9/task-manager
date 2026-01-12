@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer/Footer";
+import FooterAction from "@/components/Home/FooterAction/FooterAction";
 import Hero from "@/components/Home/Hero";
 import Navbar from "@/components/Home/Navbar";
 import Plans from "@/components/Home/Plans/Plans";
@@ -18,6 +19,7 @@ export default function Home({ children }: { children: React.ReactNode }) {
         <ProblemSolution />
         <SmartTracking />
         <Plans />
+        <FooterAction />
         {children}
       </main>
       <footer className="w-10/12 mx-auto">
