@@ -34,7 +34,7 @@ const list = [
 
 const SmartTracking = () => {
   return (
-    <div className="space-y-10 ">
+    <div className="space-y-5 ">
       <div className="flex items-center justify-center gap-1 bg-black/10 w-xs  py-1 rounded-full mx-auto">
         <Image
           className="w-5"
@@ -45,10 +45,10 @@ const SmartTracking = () => {
         />
         <p>The Smart Way To Time Tracking</p>
       </div>
-      <h2 className="text-center font-bold text-5xl">
+      <h2 className="text-center font-bold text-4xl">
         3 Easy Step To Smarter Tracking
       </h2>
-      <div className="grid grid-cols-3 gap-5 px-30">
+      <div className="grid grid-cols-3 gap-5 px-30 my-10">
         <StartTrackingCard image="/tracking.png" title="Start Tracking" />
         <StartTrackingCard
           image="/connected-user.png"

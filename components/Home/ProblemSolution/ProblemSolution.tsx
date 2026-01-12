@@ -15,7 +15,7 @@ const ProblemSolution = () => {
         />
         <p>Powerful Tools Simple Experences</p>
       </div>
-      <h2 className="text-center font-bold text-5xl">
+      <h2 className="text-center font-bold text-4xl">
         All In One Productiveity Solution
       </h2>
       <div className="grid grid-cols-3 gap-8 mt-10">

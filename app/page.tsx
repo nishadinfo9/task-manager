@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer/Footer";
 import Hero from "@/components/Home/Hero";
 import Navbar from "@/components/Home/Navbar";
+import Plans from "@/components/Home/Plans/Plans";
 import ProblemSolution from "@/components/Home/ProblemSolution/ProblemSolution";
 import ServicesComp from "@/components/Home/ServiceList/ServicesList";
 import SmartTracking from "@/components/Home/SmartTracking/SmartTracking";
@@ -16,6 +17,7 @@ export default function Home({ children }: { children: React.ReactNode }) {
         <ServicesComp />
         <ProblemSolution />
         <SmartTracking />
+        <Plans />
         {children}
       </main>
       <footer className="w-10/12 mx-auto">
