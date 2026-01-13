@@ -7,27 +7,27 @@ import { ArrowUpRight } from "lucide-react";
 
 const list = [
   {
-    title: "Effortless Time Track",
+    title: "Effortless Time Tracking",
     icon: (
-      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1 " />
+      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1" />
     ),
   },
   {
-    title: "Effortless Time Track",
+    title: "Smart Task Organization",
     icon: (
-      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1 " />
+      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1" />
     ),
   },
   {
-    title: "Effortless Time Track",
+    title: "Real-Time Progress Updates",
     icon: (
-      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1 " />
+      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1" />
     ),
   },
   {
-    title: "Effortless Time Track",
+    title: "Deadlines & Reminders",
     icon: (
-      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1 " />
+      <FaCheck size={20} className="rounded-full bg-red-400 text-white p-1" />
     ),
   },
 ];
@@ -58,12 +58,14 @@ const SmartTracking = () => {
       </div>
       <div className="w-full border flex gap-10 bg-black/10 p-10 rounded-xl">
         <div className="flex-1 my-auto space-y-5">
-          <h2 className="text-2xl font-semibold">Start Time Tracking Now</h2>
-          <p>
-            Geeting started to gettingless Geeting started to gettingless
-            Geeting started to gettingless Geeting started to gettingless
-            Geeting started to gettingless Geeting started to gettingless
-            Geeting started to gettingless
+          <h2 className="text-2xl font-semibold">
+            Boost Your Productivity Today
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Stay organized, manage your tasks efficiently, and never miss a
+            deadline. Our intuitive task manager helps you track your work,
+            prioritize important tasks, and achieve more every day —
+            effortlessly.
           </p>
           <div>
             <div className="flex flex-wrap items-center gap-y-1 gap-x-5">

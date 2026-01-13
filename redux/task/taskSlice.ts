@@ -1,12 +1,14 @@
+"use client";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Task } from "@/types/task";
+import { demoTasks } from "@/utils/demoData";
 
 interface TaskState {
   tasks: Task[];
 }
 
 const initialState: TaskState = {
-  tasks: [],
+  tasks: demoTasks,
 };
 
 const taskSlice = createSlice({

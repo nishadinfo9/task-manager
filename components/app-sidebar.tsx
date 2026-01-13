@@ -1,7 +1,17 @@
-import * as React from "react"
+"use client";
 
-import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
+import * as React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { LogOut, ChevronDown } from "lucide-react";
+import { SearchForm } from "@/components/search-form";
 import {
   Sidebar,
   SidebarContent,
@@ -13,161 +23,80 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-// This is sample data.
-const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
+import {
+  LayoutDashboard,
+  CheckSquare,
+  CalendarDays,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+
+// --- Sidebar menu data ---
+export const sidebarData = {
   navMain: [
     {
-      title: "Getting Started",
-      url: "#",
+      title: "Dashboard",
       items: [
         {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Building Your Application",
-      url: "#",
-      items: [
-        {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
+          title: "Overview",
+          url: "/dashboard",
           isActive: true,
+          icon: <LayoutDashboard className="h-4 w-4" />,
         },
         {
-          title: "Rendering",
-          url: "#",
+          title: "All Tasks",
+          url: "/dashboard/all-tasks",
+          isActive: false,
+          icon: <CheckSquare className="h-4 w-4" />,
         },
         {
-          title: "Caching",
-          url: "#",
+          title: "Today's Tasks",
+          url: "/dashboard/todays-tasks",
+          isActive: false,
+          icon: <CalendarDays className="h-4 w-4" />,
         },
         {
-          title: "Styling",
-          url: "#",
+          title: "Completed Tasks",
+          url: "/dashboard/completed-tasks",
+          isActive: false,
+          icon: <CheckCircle className="h-4 w-4" />,
         },
         {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API Reference",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
+          title: "Overdue Tasks",
+          url: "/dashboard/overdue-tasks",
+          isActive: false,
+          icon: <AlertCircle className="h-4 w-4" />,
         },
       ],
     },
   ],
-}
+};
 
+// --- Sidebar component ---
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar {...props}>
-      <SidebarHeader>
-        <VersionSwitcher
-          versions={data.versions}
-          defaultVersion={data.versions[0]}
-        />
+    <Sidebar {...props} className="flex flex-col h-screen">
+      {/* Header: Search */}
+      <SidebarHeader className="px-4 py-2 border-b">
         <SearchForm />
       </SidebarHeader>
-      <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+
+      {/* Sidebar content: navigation */}
+      <SidebarContent className="flex-1 overflow-y-auto px-2 py-4">
+        {sidebarData.navMain.map((group) => (
+          <SidebarGroup key={group.title} className="mb-4">
+            <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {item.items.map((item) => (
+                {group.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                      <a className="flex items-center gap-2" href={item.url}>
+                        {item.icon}
+                        <span>{item.title}</span>
+                      </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -176,7 +105,33 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroup>
         ))}
       </SidebarContent>
+
+      {/* Footer: user profile */}
+      <div className="px-4 py-4 border-t">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="w-full justify-start gap-2">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="/avatar.png" alt="User" />
+                <AvatarFallback>U</AvatarFallback>
+              </Avatar>
+              <span className="flex-1 text-left">John Doe</span>
+              <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start">
+            <DropdownMenuLabel>Account</DropdownMenuLabel>
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
