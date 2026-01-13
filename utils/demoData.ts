@@ -1,4 +1,3 @@
-// utils/demoData.ts
 import { Task } from "@/types/task";
 
 export const demoTasks: Task[] = [
