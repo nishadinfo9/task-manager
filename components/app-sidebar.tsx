@@ -11,14 +11,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { LogOut, ChevronDown } from "lucide-react";
-import { SearchForm } from "@/components/search-form";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -32,6 +30,7 @@ import {
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
+import Link from "next/link";
 
 // --- Sidebar menu data ---
 export const sidebarData = {
@@ -41,7 +40,7 @@ export const sidebarData = {
       items: [
         {
           title: "Overview",
-          url: "/dashboard",
+          url: "/dashboard/overview",
           isActive: true,
           icon: <LayoutDashboard className="h-4 w-4" />,
         },
@@ -78,11 +77,6 @@ export const sidebarData = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props} className="flex flex-col h-screen">
-      {/* Header: Search */}
-      <SidebarHeader className="px-4 py-2 border-b">
-        <SearchForm />
-      </SidebarHeader>
-
       {/* Sidebar content: navigation */}
       <SidebarContent className="flex-1 overflow-y-auto px-2 py-4">
         {sidebarData.navMain.map((group) => (
@@ -93,10 +87,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {group.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a className="flex items-center gap-2" href={item.url}>
+                      <Link className="flex items-center gap-2" href={item.url}>
                         {item.icon}
                         <span>{item.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
