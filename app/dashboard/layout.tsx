@@ -6,7 +6,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Task Magager | Track Every Seconds",
+  title: "Dashboard | Task Magager | Track Every Seconds",
   description: "Track your time easily with task manager",
 };
 
@@ -20,39 +20,10 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import {
-  FaTasks,
-  FaCheckCircle,
-  FaClock,
-  FaExclamationCircle,
-} from "react-icons/fa";
 import ClientWrapper from "./overview/ClientWrapper";
 import { PageBreadcrumb } from "@/components/Dashboard/PageBreadcrumb/PageBreadcrumb";
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const stats = [
-    {
-      title: "Total Tasks",
-      value: 120,
-      icon: <FaTasks className="text-3xl text-blue-500" />,
-    },
-    {
-      title: "Completed Tasks",
-      value: 80,
-      icon: <FaCheckCircle className="text-3xl text-green-500" />,
-    },
-    {
-      title: "Pending Tasks",
-      value: 30,
-      icon: <FaClock className="text-3xl text-yellow-500" />,
-    },
-    {
-      title: "Overdue Tasks",
-      value: 10,
-      icon: <FaExclamationCircle className="text-3xl text-red-500" />,
-    },
-  ];
-
   return (
     <ClientWrapper>
       <SidebarProvider>
