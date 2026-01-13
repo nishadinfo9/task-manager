@@ -59,7 +59,6 @@ export const columns: ColumnDef<Task>[] = [
     header: "Task Title",
   },
 
-  // Status column
   {
     accessorKey: "status",
     header: "Status",
@@ -70,12 +69,12 @@ export const columns: ColumnDef<Task>[] = [
           ? "outline"
           : status === "In Progress"
           ? "secondary"
-          : "default"; // Completed
+          : "default"; 
       return <Badge variant={variant}>{status}</Badge>;
     },
   },
 
-  // Priority column
+
   {
     accessorKey: "priority",
     header: "Priority",
@@ -86,18 +85,30 @@ export const columns: ColumnDef<Task>[] = [
           ? "destructive"
           : priority === "Medium"
           ? "secondary"
-          : "default"; // Low
+          : "default";
       return <Badge variant={variant}>{priority}</Badge>;
     },
   },
 
   {
-    accessorKey: "due",
+    accessorKey: "dueDate",
     header: "Due Date",
+    cell: ({ row }) => {
+      const date = row.getValue("dueDate") as Date;
+      return (
+        <span>
+          {date
+            ? new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(
+                date
+              )
+            : "-"}
+        </span>
+      );
+    },
   },
   {
     id: "actions",
-    header: "",
+    header: "Actions",
     cell: () => (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

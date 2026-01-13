@@ -12,13 +12,14 @@ import {
 
 export function PageBreadcrumb() {
   const pathname = usePathname();
-  console.log({ pathname }); // e.g., "/dashboard/overview"
   const pathSegments = pathname?.split("/").filter(Boolean) || []; // ["dashboard", "overview"]
   const lastSegment = pathSegments[pathSegments.length - 1] || "Home";
 
   // Capitalize first letter
-  const currentPage =
-    lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
+  const currentPath = lastSegment.split("-");
+  const currentPage = currentPath
+    .map((char) => char.charAt(0).toUpperCase() + char.slice(1))
+    .join(" ");
 
   return (
     <Breadcrumb>

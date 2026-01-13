@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import DashboardPieChart from "@/components/Dashboard/PieChart/PieChart";
 import DashboardAreaChart from "@/components/Dashboard/AreaChart/AreaChart";
-import SimpleTaskTable from "@/components/Dashboard/DataTable/DataTable";
+import TaskTable from "@/components/Dashboard/TaskTable/TaskTable";
 
 export default function Page() {
   const stats = [
@@ -69,7 +69,7 @@ export default function Page() {
       </div>
       {/* Table Section */}
       <div className="rounded-xl bg-white dark:bg-gray-800 mt-30">
-        <SimpleTaskTable />
+        <TaskTable />
       </div>
     </div>
   );
