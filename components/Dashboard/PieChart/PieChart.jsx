@@ -61,7 +61,7 @@ export default function DashboardPieChart() {
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ResponsiveContainer width="100%" height={240}>
+        <ResponsiveContainer width="100%" height={190}>
           <ChartContainer
             config={chartConfig}
             className="w-full h-full min-h-60"

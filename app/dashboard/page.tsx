@@ -23,6 +23,7 @@ import {
 import ClientWrapper from "./ClientWrapper";
 import DashboardPieChart from "@/components/Dashboard/PieChart/PieChart";
 import DashboardAreaChart from "@/components/Dashboard/AreaChart/AreaChart";
+import SimpleTaskTable from "@/components/Dashboard/DataTable/DataTable";
 
 export default function Page() {
   const stats = [
@@ -96,16 +97,22 @@ export default function Page() {
             </div>
 
             {/* Chart Section */}
-            <div className="flex flex-col md:flex-row gap-5 w-full">
-              {/* Area Chart */}
-              <div className="flex-1 min-w-0 md:h-[200px]">
-                <DashboardAreaChart />
-              </div>
+            <div className="rounded-xl bg-white dark:bg-gray-800">
+              <div className="flex flex-col md:flex-row gap-5 w-full">
+                {/* Area Chart */}
+                <div className="flex-1  h-[200px]">
+                  <DashboardAreaChart />
+                </div>
 
-              {/* Pie Chart */}
-              <div className="w-[350px] h-[200px]">
-                <DashboardPieChart />
+                {/* Pie Chart */}
+                <div className="w-full md:w-[350px] h-[200px]">
+                  <DashboardPieChart />
+                </div>
               </div>
+            </div>
+            {/* Table Section */}
+            <div className="rounded-xl bg-white dark:bg-gray-800 mt-30">
+              <SimpleTaskTable />
             </div>
           </div>
         </SidebarInset>
