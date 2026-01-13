@@ -1,4 +1,5 @@
 import DialogOpen from "@/components/Dashboard/AllTask/DialogOpen";
+import SearchAndSorting from "@/components/Dashboard/AllTask/SearchAndSorting";
 import TableForm from "@/components/Dashboard/TableForm/TableForm";
 import { Task } from "@/types/task";
 
@@ -36,8 +37,11 @@ const AllTasks = () => {
   return (
     <div className="w-full p-4">
       <div className="overflow-hidden rounded-xl bg-white dark:bg-gray-800 border p-4">
-        <DialogOpen />
-        <TableForm data={data} />
+        <DialogOpen headline="All Tasks" />
+        <SearchAndSorting />
+        <div className="overflow-hidden rounded-xl bg-white dark:bg-gray-800 border p-4">
+          <TableForm data={data} />
+        </div>
       </div>
     </div>
   );

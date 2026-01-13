@@ -30,15 +30,15 @@ import {
 
 import { CalendarIcon } from "lucide-react";
 
-type EditProfileDialogProps = {
+type TaskFormProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
 
-export default function EditProfileDialog({
+export default function TaskForm({
   open,
   onOpenChange,
-}: EditProfileDialogProps) {
+}: TaskFormProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[480px]">
