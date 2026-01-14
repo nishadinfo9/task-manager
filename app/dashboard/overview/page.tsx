@@ -5,9 +5,9 @@ import {
   FaClock,
   FaExclamationCircle,
 } from "react-icons/fa";
-import DashboardPieChart from "@/components/Dashboard/PieChart/PieChart";
-import DashboardAreaChart from "@/components/Dashboard/AreaChart/AreaChart";
-import TaskTable from "@/components/Dashboard/TaskTable/TaskTable";
+import DashboardPieChart from "@/components/Dashboard/Overview/PieChart/PieChart";
+import DashboardAreaChart from "@/components/Dashboard/Overview/AreaChart/AreaChart";
+import TaskTable from "@/components/Dashboard/Overview/TaskTable/TaskTable";
 
 export default function Page() {
   const stats = [

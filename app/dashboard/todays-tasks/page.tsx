@@ -1,6 +1,6 @@
 import DialogOpen from "@/components/Dashboard/AllTask/DialogOpen";
 import SearchAndSorting from "@/components/Dashboard/AllTask/SearchAndSorting";
-import TableForm from "@/components/Dashboard/TableForm/TableForm";
+import TableForm from "@/components/Dashboard/Overview/TableForm/TableForm";
 import { Task } from "@/types/task";
 
 const data: Task[] = [

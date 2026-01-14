@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import TaskForm from "../DialogTask/DialogTask";
+import TaskForm from "../Overview/DialogTask/DialogTask";
 
 interface Head {
   headline: string;

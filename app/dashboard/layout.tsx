@@ -21,7 +21,8 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import ClientWrapper from "./overview/ClientWrapper";
-import { PageBreadcrumb } from "@/components/Dashboard/PageBreadcrumb/PageBreadcrumb";
+import { PageBreadcrumb } from "@/components/Dashboard/Overview/PageBreadcrumb/PageBreadcrumb";
+import { Toaster } from "sonner";
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
@@ -38,7 +39,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <PageBreadcrumb />
           </header>
 
-          <body className={`${poppins.className}`}>{children}</body>
+          <body className={`${poppins.className}`}>
+            {children}
+            <Toaster />
+          </body>
         </SidebarInset>
       </SidebarProvider>
     </ClientWrapper>

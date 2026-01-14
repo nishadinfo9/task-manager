@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
 import { Toaster } from "sonner";
-import NextAuthProvider from "@/Provider/NextAuthProvider";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
@@ -21,10 +19,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>
-        <NextAuthProvider>
-          {children}
-          <Toaster />
-        </NextAuthProvider>
+        <div>nav</div>
+
+        {children}
+        <Toaster />
+        <div>nav</div>
       </body>
     </html>
   );

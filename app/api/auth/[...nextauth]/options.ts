@@ -1,25 +1,26 @@
 import bcrypt from "bcrypt";
-import userModel from "@/models/userModel";
-
 import CredentialsProvider from "next-auth/providers/credentials";
 import connectDB from "@/lib/connectDB";
-export const authOptions = {
+import userModel from "@/models/userModel";
+import type { NextAuthOptions } from "next-auth";
+
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      id: "Credentials",
+      id: "credentials",
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         await connectDB();
+
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
 
         const user = await userModel.findOne({ email: credentials.email });
-
         if (!user) return null;
 
         const isPasswordValid = await bcrypt.compare(
@@ -30,13 +31,14 @@ export const authOptions = {
         if (!isPasswordValid) return null;
 
         return {
-          id: user._id.toString(), // ✅ REQUIRED
+          id: user._id.toString(),
           email: user.email,
-          username: user.username,
+          name: user.username,
         };
       },
     }),
   ],
+
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -46,15 +48,20 @@ export const authOptions = {
     },
 
     async session({ session, token }) {
-      session.user._id = token._id;
+      if (session.user) {
+        session.user._id = token._id as string;
+      }
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+
   pages: {
     signIn: "/login",
   },
+
   session: {
     strategy: "jwt",
   },
+
+  secret: process.env.NEXTAUTH_SECRET,
 };
